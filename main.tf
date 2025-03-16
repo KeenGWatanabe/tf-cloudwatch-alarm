@@ -1,9 +1,9 @@
 resource "aws_cloudwatch_metric_alarm" "info_log_alarm" {
-  alarm_name          = "agusjuli-info-count-breach"
+  alarm_name          = "rger-info-count-breach"
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = 1
   metric_name         = "info-count"
-  namespace           = "/moviedb-api/agusjuli"
+  namespace           = "/moviedb-api/roger"
   period              = 60  # Evaluate over 1 minute
   statistic           = "Sum"
   threshold           = 10  # Change this to your desired threshold
@@ -14,11 +14,11 @@ resource "aws_cloudwatch_metric_alarm" "info_log_alarm" {
 }
 
 resource "aws_sns_topic" "log_alarm_notification" {
-  name = "agusjuli-alert-topic"
+  name = "rger-alert-topic"
 }
 
 resource "aws_sns_topic_subscription" "email_notification" {
   topic_arn = aws_sns_topic.log_alarm_notification.arn
   protocol  = "email"
-  endpoint  = "agusjuli@yahoo.com.sg"  # Change this to the recipient's email
+  endpoint  = "mckeen.it@gmail.com"  # Change this to the recipient's email
 }
